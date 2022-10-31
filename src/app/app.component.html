@@ -1,3 +1,18 @@
 <div style="text-align:center">
-  <app-current-weather></app-current-weather>
+  <mat-toolbar color="primary">
+    Local Weather
+  </mat-toolbar>
+  <div>
+    <mat-card style=" width: 300px; margin: auto;padding:10px" >
+      <app-city-search></app-city-search>
+    </mat-card>
+   
+  </div>
+  <div>
+    <mat-card style=" width: 300px; margin: auto;padding:10px">
+        <mat-card-title>Current weather</mat-card-title>
+      <app-current-weather></app-current-weather>
+    </mat-card>
+  </div>
+  
 </div>

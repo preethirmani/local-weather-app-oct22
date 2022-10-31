@@ -1,1 +1,8 @@
-<p>city-search works!</p>
+<form>
+  <mat-form-field>
+    <mat-label>City Name or Zipcode</mat-label>
+    <mat-icon mat-prefix="search"></mat-icon>
+    <input matInput [formControl]="search">
+    <mat-hint>Specify country code like 'Redmond, US'</mat-hint>
+  </mat-form-field>
+</form>
