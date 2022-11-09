@@ -1,5 +1,5 @@
 
-<div>
+<div *ngIf="current.city">
   <div>
     <span>{{current.city}} </span>
     <span>{{current.country}}</span>
@@ -14,4 +14,7 @@
   <div>
     {{current.description}}
   </div>
+</div>
+<div *ngIf = "!current.city">
+  No data to display
 </div>

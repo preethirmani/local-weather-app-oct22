@@ -11,21 +11,31 @@ export class WeatherService {
 
   constructor(private httpClient : HttpClient) { }
 
-  getCurrentWeather(search : string | number, country?: string){
+  getCurrentWeather(search : string , country?: string){
 
     let uriParams = ''
-    if(typeof(search) == 'string') {
-      uriParams = `q= ${search}`
+    let reg = /[0123456789]/;
+    let url = '';
 
+    //to check for zipcode
+    if(reg.test(search)) {
+      
+      uriParams = `zip=${search}`
+      
     } else {
-       uriParams = `zip= ${search}`
+      uriParams = `q=${search}`
+
     }
 
     if(country) {
       uriParams = `${uriParams},${country}`
     }
 
-    return this.httpClient.get<IcurrentWeatherData>(`https://api.openweathermap.org/data/2.5/weather?${uriParams}&appid=${environment.appId}`).pipe(map(data => this.transformToIcurrentWeatherData(data)));
+    url = `https://api.openweathermap.org/data/2.5/weather?${uriParams}&appid=${environment.appId}`
+
+    console.log('url::' + url);
+
+    return this.httpClient.get<IcurrentWeatherData>(url).pipe(map(data => this.transformToIcurrentWeatherData(data)));
   }
 
   transformToIcurrentWeatherData(data:IcurrentWeatherData) {
